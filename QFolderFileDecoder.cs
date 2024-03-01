@@ -1,6 +1,6 @@
 ﻿namespace QFolder
 {
-    internal class QFolderFileDecoder
+    public class QFolderFileDecoder
     {
         private readonly List<QItemD> dirs;
         private readonly List<QItemF> files;

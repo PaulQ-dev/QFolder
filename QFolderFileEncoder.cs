@@ -2,7 +2,7 @@
 
 namespace QFolder
 {
-    internal class QFolderFileEncoder
+    public class QFolderFileEncoder
     {
         private readonly List<QItemD> dirs;
         private readonly List<QItemF> files;
