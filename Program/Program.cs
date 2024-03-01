@@ -13,11 +13,11 @@ namespace Program
                 switch (Console.ReadLine()!.ToLower())
                 {
                     case "pack":
-                        while (true)
+                        //while (true)
                         {
                             Console.Write("Folder name?\n>");
                             string name = Console.ReadLine()!;
-                            if (Directory.Exists(name)) {
+                            if (File.Exists(name+".qpack")) {
                                 QFolderFileEncoder.Pack(name, name + ".qpack");
                                 Console.WriteLine($"Done! Save as {name}.qpack");
                                 break;
@@ -32,7 +32,7 @@ namespace Program
                         Console.WriteLine("N/I");
                         break;
                     case "list":
-                        while (true)
+                        //while (true)
                         {
                             Console.Write("Folders or Qpacks(F/Q)\n>");
                             string type = Console.ReadLine()!;
@@ -46,20 +46,21 @@ namespace Program
                             }
                             if(type == "Q")
                             {
-                                foreach(string pack in Directory.GetDirectories(Directory.GetCurrentDirectory()))
+                                foreach(string pack in Directory.GetFiles(Directory.GetCurrentDirectory()))
                                 {
-                                    Console.Write((pack.Contains('.') && (pack[pack.LastIndexOf('.')..]) == ".qpack") ? pack + '\n' : "");
+                                    if(pack.Contains('.') && (pack[(pack.Length-6)..]) == ".qpack")
+                                    Console.Write( pack + '\n');
                                 }
                                 break;
                             }
                         }
                         break;
                     case "unpack":
-                        while (true)
+                        //while (true)
                         {
                             Console.Write("File name (without extension)?\n>");
                             string name = Console.ReadLine()!;
-                            if (Directory.Exists(name))
+                            if (File.Exists(name + ".qpack"))
                             {
                                 QFolderFileDecoder.Unpack(name+".qpack");
                                 Console.WriteLine($"Done! Save as {name}");

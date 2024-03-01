@@ -8,7 +8,7 @@
 
         public void Open(string path)
         {
-            if (Directory.Exists(path)) source = path;
+            if (File.Exists(path)) source = path;
         }
 
         public void Load()
